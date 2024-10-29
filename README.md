@@ -51,14 +51,14 @@ To further make this solution invulnerable to brute-force attacks, we encrypt th
 
 
 The full merkle tree is necessary to parse the data needed for onchain authentication with the deployed merkle-tree root.
-Earlier implementations od this approach have stored the tree in the browsers local-storage. Needless to say that this solution is sub-optimal for multiple reasons.
-We choose for decentralized storage an provide the user the option to store and retrieve the tree from **IPFS**, specifically web3storage, or **CERAMIC**, a protocol for decentralized data composability.
+Earlier implementations of this approach have stored the tree in the browsers local-storage. Needless to say that this solution is sub-optimal for multiple reasons.
+We choose for decentralized storage to provide the user the option to store and retrieve the tree from **IPFS**, specifically web3storage, or **CERAMIC**, a protocol for decentralized data composability.
 
 
-Authentication can be invoked by any smart-contract, wallet or even token when used as modifier. The calldata is put on hold until the user authenticates. Authentication requests emit an event which get's indexed by **theGraph**, a decentralized blockchain indexing protocol. We use these events to inform the user about open authentications and the staged call-data.
+Authentication can be invoked by any smart-contract, wallet or even token when used as modifier. The calldata is put on hold until the user authenticates. Authentication requests emit an event which get indexed by **theGraph**, a decentralized blockchain indexing protocol. We use these events to inform the user about open authentications and the staged call-data.
 
-The authentication step requires the user to access her/his TOTP generator and the corresponding merkle-tree.
-Once a TOTP is provided, it get's hashed together with the current time-step and compared to the leaves of the merkle-tree. If a matching hash is found, the same plus the additional branch-hashes necessary for verification are send to the blockchain. With the initially provided root, it can be verified that the merkle-tree has not been modified. This method is commonly used to prove the integrity of downloaded files and in internet protocols such as TSL to protect against man-in-the middle attacks.
+The authentication step requires the user to access his TOTP generator and the corresponding merkle-tree.
+Once a TOTP is provided, it get hashed together with the current time-step and compared to the leaves of the merkle-tree. If a matching hash is found, the same plus the additional branch-hashes necessary for verification are sent to the blockchain. With the initially provided root, it can be verified that the merkle-tree has not been modified. This method is commonly used to prove the integrity of downloaded files and in internet protocols such as TSL to protect against man-in-the middle attacks.
 
 
 
